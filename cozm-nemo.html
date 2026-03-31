@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cozm Nemo — Talent Mobility Technology | The Cozm</title>
+  <meta name="description" content="Coming soon: Cozm Nemo brings mobility data into talent planning, enabling smarter decisions for international bids and global workforce strategy.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="assets/logo-transparent.png" alt="The Cozm"></a>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+      <li class="nav-item">
+        <a href="#" class="nav-link active">Our Solutions ▾</a>
+        <div class="nav-dropdown">
+          <a href="cozm-travel.html">Cozm Travel</a>
+          <a href="cozm-unity.html">Cozm Unity</a>
+          <a href="cozm-nemo.html" style="color:#40AEBC">Cozm Nemo <span style="font-size:0.7rem;margin-left:4px">Soon</span></a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="why-us.html" class="nav-link">Why Us?</a></li>
+      <li class="nav-item"><a href="why-now.html" class="nav-link">Why Now?</a></li>
+      <li class="nav-item"><a href="case-studies.html" class="nav-link">Case Studies</a></li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">About Us ▾</a>
+        <div class="nav-dropdown">
+          <a href="about.html#story">Our Story</a>
+          <a href="about.html#mission">Mission, Vision & Values</a>
+          <a href="about.html#team">Our Team</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Insights ▾</a>
+        <div class="nav-dropdown"><a href="insights.html">Articles</a><a href="insights.html#news">News</a><a href="events.html">Events</a></div>
+      </li>
+    </ul>
+    <a href="index.html#book-demo" class="btn btn-teal nav-cta">Book a Demo</a>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" class="mobile-nav-link">Home</a>
+  <a href="cozm-travel.html" class="mobile-nav-link">Cozm Travel</a>
+  <a href="cozm-unity.html" class="mobile-nav-link">Cozm Unity</a>
+  <a href="cozm-nemo.html" class="mobile-nav-link">Cozm Nemo (Coming Soon)</a>
+  <a href="about.html" class="mobile-nav-link">About Us</a>
+  <a href="index.html#book-demo" class="btn btn-teal">Book a Demo</a>
+</div>
+
+<!-- HERO - COMING SOON -->
+<section style="min-height:100vh;background:var(--dark-indigo);display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding-top:72px">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(64,174,188,0.1),transparent 70%)"></div>
+  <div style="position:absolute;inset:0" id="dotsContainer"></div>
+  <div style="position:relative;z-index:2;padding:3rem 2rem;max-width:780px">
+    <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(64,174,188,0.12);border:1px solid rgba(64,174,188,0.3);border-radius:50px;padding:0.4rem 1.2rem;font-size:0.8rem;font-weight:700;color:var(--teal);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2rem">🌐 Coming Soon — 2025</div>
+    <h1 style="color:white;font-size:clamp(2.5rem,5vw,4rem);margin-bottom:1.5rem">Cozm <span style="color:#40AEBC">Nemo</span></h1>
+    <h2 style="color:rgba(255,255,255,0.7);font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:400;margin-bottom:1.5rem">Talent Mobility Technology</h2>
+    <p style="color:rgba(255,255,255,0.55);font-size:1.05rem;line-height:1.8;margin-bottom:3rem">Brings mobility data into talent planning, allowing you to make better decisions earlier for international bids, cross-border hires, and global workforce strategy. The third piece of the ecosystem — and the most transformative.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin:3rem 0;text-align:left">
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(64,174,188,0.15);border-radius:16px;padding:1.75rem">
+        <div style="font-size:1.5rem;margin-bottom:0.75rem">🎯</div>
+        <h4 style="color:white;margin-bottom:0.5rem;font-size:1rem">International Bid Intelligence</h4>
+        <p style="color:rgba(255,255,255,0.5);font-size:0.875rem">Make smarter, faster decisions when bidding for international projects — before compliance costs erode margins.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(64,174,188,0.15);border-radius:16px;padding:1.75rem">
+        <div style="font-size:1.5rem;margin-bottom:0.75rem">👥</div>
+        <h4 style="color:white;margin-bottom:0.5rem;font-size:1rem">Cross-Border Hire Decisions</h4>
+        <p style="color:rgba(255,255,255,0.5);font-size:0.875rem">Understand the full cost and compliance picture of a cross-border hire before the offer is made.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(64,174,188,0.15);border-radius:16px;padding:1.75rem">
+        <div style="font-size:1.5rem;margin-bottom:0.75rem">📊</div>
+        <h4 style="color:white;margin-bottom:0.5rem;font-size:1rem">Global Workforce Strategy</h4>
+        <p style="color:rgba(255,255,255,0.5);font-size:0.875rem">Align mobility data with talent planning for a unified view of your global workforce — present and future.</p>
+      </div>
+    </div>
+
+    <div style="background:rgba(64,174,188,0.08);border:1px solid rgba(64,174,188,0.2);border-radius:16px;padding:2rem;margin-bottom:2.5rem">
+      <h4 style="color:white;margin-bottom:0.5rem">Be First to Know When Cozm Nemo Launches</h4>
+      <form style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;margin-top:1rem" onsubmit="return false;">
+        <input type="email" placeholder="Enter your work email" style="padding:0.85rem 1.25rem;border-radius:50px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.06);color:white;font-family:'Inter',sans-serif;font-size:0.9rem;min-width:260px;outline:none">
+        <button type="submit" class="btn btn-teal">Notify Me</button>
+      </form>
+    </div>
+
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="cozm-travel.html" class="btn btn-outline-white">Explore Cozm Travel</a>
+      <a href="cozm-unity.html" class="btn btn-outline-white">Explore Cozm Unity</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-top">
+    <img src="assets/logo-transparent.png" alt="The Cozm">
+    <p>Digital Acceleration of Global Mobility</p>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/company/thecozm" target="_blank" title="LinkedIn">in</a>
+      <a href="mailto:support@thecozm.com" title="Email">✉</a>
+      <a href="https://www.thecozm.com" target="_blank" title="Website">🌐</a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col"><h5>Solutions</h5><ul><li><a href="cozm-travel.html">Cozm Travel</a></li><li><a href="cozm-unity.html">Cozm Unity</a></li><li><a href="cozm-nemo.html">Cozm Nemo</a></li></ul></div>
+      <div class="footer-col"><h5>Company</h5><ul><li><a href="why-us.html">Why Us?</a></li><li><a href="why-now.html">Why Now?</a></li><li><a href="case-studies.html">Case Studies</a></li><li><a href="about.html">About Us</a></li></ul></div>
+      <div class="footer-col"><h5>Insights</h5><ul><li><a href="insights.html">Articles</a></li><li><a href="insights.html#news">News</a></li></ul></div>
+      <div class="footer-col"><h5>Contact</h5><ul><li><a href="mailto:support@thecozm.com">support@thecozm.com</a></li><li><a href="mailto:benjamin@thecozm.com">benjamin@thecozm.com</a></li><li><a href="https://www.thecozm.com" target="_blank">www.thecozm.com</a></li></ul></div>
+    </div>
+    <div class="footer-address">
+      <p>The Cozm Ltd &nbsp;·&nbsp; London, United Kingdom &nbsp;·&nbsp; <a href="mailto:support@thecozm.com">support@thecozm.com</a></p>
+      <div class="iso-badge"><span class="badge">ISO 7001</span> Certified</div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 The Cozm Ltd. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+  </div>
+</footer>
+<script src="chatbot.js"></script>
+<script>function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }</script>
+</body>
+</html>

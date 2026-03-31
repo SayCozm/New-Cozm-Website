@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events — AI in Global Mobility | The Cozm</title>
+  <meta name="description" content="Join The Cozm at upcoming events, webinars, and roundtables on AI, automation, and the future of global mobility compliance.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <style>
+    /* Events-specific styles */
+    .events-hero-bg {
+      position: absolute; inset: 0; z-index: 1;
+      background: radial-gradient(ellipse 70% 80% at 60% 50%, rgba(64,174,188,0.1) 0%, transparent 70%);
+    }
+    .event-card {
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .event-card:hover {
+      border-color: var(--teal);
+      box-shadow: 0 16px 48px rgba(64,174,188,0.12);
+      transform: translateY(-4px);
+    }
+    .event-card-header {
+      background: var(--dark-indigo);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .event-card-header::after {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, rgba(64,174,188,0.18) 0%, transparent 70%);
+    }
+    .event-type-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(64,174,188,0.15);
+      border: 1px solid rgba(64,174,188,0.3);
+      color: var(--teal);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+    .event-date-box {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .event-date-block {
+      background: var(--teal);
+      border-radius: 10px;
+      padding: 0.5rem 0.85rem;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .event-date-block .day { font-size: 1.5rem; font-weight: 800; color: white; line-height: 1; }
+    .event-date-block .month { font-size: 0.7rem; font-weight: 700; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 0.06em; }
+    .event-date-meta { color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+    .event-date-meta strong { color: white; display: block; font-size: 0.9rem; }
+    .event-card-body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; }
+    .event-card-body h3 { color: var(--dark-indigo); font-size: 1.1rem; margin-bottom: 0.6rem; line-height: 1.35; }
+    .event-card-body p { font-size: 0.875rem; line-height: 1.65; flex: 1; }
+    .event-details { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+    .event-detail-chip {
+      display: flex; align-items: center; gap: 0.35rem;
+      font-size: 0.78rem; color: var(--body-text);
+      background: var(--off-white); border-radius: 50px;
+      padding: 0.25rem 0.75rem;
+    }
+    .event-register-btn {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      width: 100%; padding: 0.8rem;
+      background: var(--dark-indigo); color: white;
+      border-radius: 10px; font-weight: 600; font-size: 0.9rem;
+      transition: all 0.2s; margin-top: 1.25rem; text-align: center;
+    }
+    .event-register-btn:hover { background: var(--teal); }
+    .event-register-btn.teal { background: var(--teal); box-shadow: 0 4px 16px rgba(64,174,188,0.35); }
+    .event-register-btn.teal:hover { background: var(--teal-mid); }
+    .past-event-card {
+      display: flex; gap: 1.5rem; padding: 1.75rem;
+      background: var(--off-white);
+      border: 1px solid var(--light-gray);
+      border-radius: 16px; align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+    .past-event-card:hover { border-color: rgba(64,174,188,0.3); }
+    .past-date-tag {
+      flex-shrink: 0; background: rgba(64,174,188,0.08);
+      border: 1px solid rgba(64,174,188,0.2);
+      border-radius: 10px; padding: 0.6rem 0.85rem;
+      text-align: center; min-width: 58px;
+    }
+    .past-date-tag .day { font-size: 1.25rem; font-weight: 800; color: var(--teal); line-height: 1; }
+    .past-date-tag .month { font-size: 0.65rem; font-weight: 700; color: var(--body-text); text-transform: uppercase; }
+    .past-event-card h4 { color: var(--dark-indigo); margin-bottom: 0.3rem; font-size: 0.95rem; }
+    .past-event-card p { font-size: 0.85rem; }
+    .newsletter-cta-box {
+      background: var(--dark-indigo);
+      border-radius: 24px;
+      padding: 3rem;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 2rem; flex-wrap: wrap;
+      position: relative; overflow: hidden;
+    }
+    .newsletter-cta-box::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(64,174,188,0.12) 0%, transparent 70%);
+    }
+    @media (max-width: 768px) {
+      .newsletter-cta-box { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="assets/logo-transparent.png" alt="The Cozm"></a>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Our Solutions ▾</a>
+        <div class="nav-dropdown">
+          <a href="cozm-travel.html">Cozm Travel</a>
+          <a href="cozm-unity.html">Cozm Unity</a>
+          <a href="cozm-nemo.html">Cozm Nemo <span style="font-size:0.7rem;color:#40AEBC;margin-left:4px">Soon</span></a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="why-us.html" class="nav-link">Why Us?</a></li>
+      <li class="nav-item"><a href="why-now.html" class="nav-link">Why Now?</a></li>
+      <li class="nav-item"><a href="case-studies.html" class="nav-link">Case Studies</a></li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">About Us ▾</a>
+        <div class="nav-dropdown">
+          <a href="about.html#story">Our Story</a>
+          <a href="about.html#mission">Mission, Vision &amp; Values</a>
+          <a href="about.html#team">Our Team</a>
+          <a href="about.html#partnerships">Expertise &amp; Partnerships</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link active">Insights ▾</a>
+        <div class="nav-dropdown">
+          <a href="insights.html">Articles</a>
+          <a href="insights.html#news">News</a>
+          <a href="events.html" style="color:#40AEBC">Events</a>
+        </div>
+      </li>
+    </ul>
+    <a href="#register" class="btn btn-teal nav-cta">Register for an Event</a>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" class="mobile-nav-link">Home</a>
+  <a href="cozm-travel.html" class="mobile-nav-link">Cozm Travel</a>
+  <a href="cozm-unity.html" class="mobile-nav-link">Cozm Unity</a>
+  <a href="why-us.html" class="mobile-nav-link">Why Us?</a>
+  <a href="why-now.html" class="mobile-nav-link">Why Now?</a>
+  <a href="case-studies.html" class="mobile-nav-link">Case Studies</a>
+  <a href="about.html" class="mobile-nav-link">About Us</a>
+  <a href="insights.html" class="mobile-nav-link">Articles</a>
+  <a href="events.html" class="mobile-nav-link">Events</a>
+  <a href="#register" class="btn btn-teal">Register for an Event</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero" style="padding-bottom:4rem">
+  <div class="events-hero-bg"></div>
+  <div class="container" style="position:relative;z-index:2">
+    <div class="section-label">Events &amp; Roundtables</div>
+    <h1>Connect. Learn. <span style="color:#40AEBC">Lead.</span></h1>
+    <p>Join global mobility leaders at our live and virtual events — from AI in Global Mobility roundtables to compliance masterclasses and industry forums.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="#upcoming" class="btn btn-teal">View Upcoming Events</a>
+      <a href="mailto:support@thecozm.com" class="btn btn-outline-white">Host a Webinar With Us</a>
+    </div>
+    <div style="display:flex;gap:3rem;justify-content:center;margin-top:3rem;flex-wrap:wrap">
+      <div style="text-align:center">
+        <div style="font-size:2rem;font-weight:800;color:#40AEBC">Monthly</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.5)">Virtual Roundtables</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:2rem;font-weight:800;color:#40AEBC">Free</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.5)">To Attend</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:2rem;font-weight:800;color:#40AEBC">28+</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.5)">Countries Represented</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UPCOMING EVENTS -->
+<section class="section" id="upcoming">
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1rem">
+      <div>
+        <div class="section-label">Upcoming Events</div>
+        <h2>Events You <span class="teal">Don't Want to Miss</span></h2>
+      </div>
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+        <button style="padding:0.4rem 1rem;border-radius:50px;border:1px solid var(--light-gray);background:var(--teal);color:white;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif">All</button>
+        <button style="padding:0.4rem 1rem;border-radius:50px;border:1px solid var(--light-gray);background:transparent;color:var(--body-text);font-size:0.8rem;cursor:pointer;font-family:'Inter',sans-serif">Webinar</button>
+        <button style="padding:0.4rem 1rem;border-radius:50px;border:1px solid var(--light-gray);background:transparent;color:var(--body-text);font-size:0.8rem;cursor:pointer;font-family:'Inter',sans-serif">Roundtable</button>
+        <button style="padding:0.4rem 1rem;border-radius:50px;border:1px solid var(--light-gray);background:transparent;color:var(--body-text);font-size:0.8rem;cursor:pointer;font-family:'Inter',sans-serif">Conference</button>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem" id="register">
+
+      <!-- Event 1 — Featured -->
+      <div class="event-card" style="border-color:var(--teal)">
+        <div class="event-card-header">
+          <div class="event-type-badge">🎙 Virtual Roundtable · Featured</div>
+          <h3 style="color:white;font-size:1.15rem;position:relative;z-index:2">AI in Global Mobility Forum — May 2025 Edition</h3>
+          <div class="event-date-box" style="position:relative;z-index:2">
+            <div class="event-date-block">
+              <div class="day">15</div>
+              <div class="month">May</div>
+            </div>
+            <div class="event-date-meta">
+              <strong>Thursday, 15 May 2025</strong>
+              14:00 – 15:30 BST (London) · Online
+            </div>
+          </div>
+        </div>
+        <div class="event-card-body">
+          <p>Monthly virtual roundtable for global mobility leaders. This session focuses on the latest AI developments in automated compliance — including new Posted Worker Notification automations, real-time regulatory changes across the EU, and how teams are using The Cozm to cut filing times from days to seconds.</p>
+          <div class="event-details">
+            <span class="event-detail-chip">🌍 Online · Zoom</span>
+            <span class="event-detail-chip">🕒 90 minutes</span>
+            <span class="event-detail-chip">👥 Limited to 50 attendees</span>
+            <span class="event-detail-chip">🆓 Free to attend</span>
+          </div>
+          <div style="background:var(--pastel-blue);border-radius:10px;padding:1rem;font-size:0.85rem;color:var(--dark-indigo)">
+            <strong>Topics covered:</strong> A1 automation updates · EU PWD enforcement 2025 · Live product demo · Q&amp;A with Benjamin Oghene
+          </div>
+          <a href="mailto:support@thecozm.com?subject=Registration: AI in Global Mobility Forum May 2025" class="event-register-btn teal">Register Now →</a>
+        </div>
+      </div>
+
+      <!-- Event 2 -->
+      <div class="event-card">
+        <div class="event-card-header">
+          <div class="event-type-badge">💻 Webinar</div>
+          <h3 style="color:white;font-size:1.15rem;position:relative;z-index:2">EU Posted Worker Directive: 2025 Enforcement Changes &amp; What Teams Must Do</h3>
+          <div class="event-date-box" style="position:relative;z-index:2">
+            <div class="event-date-block">
+              <div class="day">22</div>
+              <div class="month">May</div>
+            </div>
+            <div class="event-date-meta">
+              <strong>Thursday, 22 May 2025</strong>
+              15:00 – 16:00 BST · Online
+            </div>
+          </div>
+        </div>
+        <div class="event-card-body">
+          <p>The EU Labour Authority is intensifying inspections. This practical webinar walks through the 2025 enforcement changes to the Posted Worker Directive — what's changed, which countries are highest risk, and how automated compliance tools eliminate exposure.</p>
+          <div class="event-details">
+            <span class="event-detail-chip">🌍 Online · Zoom</span>
+            <span class="event-detail-chip">🕒 60 minutes</span>
+            <span class="event-detail-chip">🆓 Free to attend</span>
+          </div>
+          <div style="background:var(--pastel-blue);border-radius:10px;padding:1rem;font-size:0.85rem;color:var(--dark-indigo)">
+            <strong>Presenter:</strong> Nargiz Garadaghi, VP Strategy &amp; Consulting · The Cozm
+          </div>
+          <a href="mailto:support@thecozm.com?subject=Registration: PWD Webinar May 2025" class="event-register-btn">Register Now →</a>
+        </div>
+      </div>
+
+      <!-- Event 3 -->
+      <div class="event-card">
+        <div class="event-card-header">
+          <div class="event-type-badge">🤝 Industry Forum</div>
+          <h3 style="color:white;font-size:1.15rem;position:relative;z-index:2">Global Mobility Leaders Summit — London 2025</h3>
+          <div class="event-date-box" style="position:relative;z-index:2">
+            <div class="event-date-block">
+              <div class="day">10</div>
+              <div class="month">Jun</div>
+            </div>
+            <div class="event-date-meta">
+              <strong>Tuesday, 10 June 2025</strong>
+              09:00 – 17:00 BST · London, UK
+            </div>
+          </div>
+        </div>
+        <div class="event-card-body">
+          <p>The Cozm will be exhibiting and presenting at this flagship in-person event for global mobility professionals in London. Come and see Cozm Travel and Cozm Unity in action, meet the team, and connect with peers across the industry.</p>
+          <div class="event-details">
+            <span class="event-detail-chip">📍 London, UK</span>
+            <span class="event-detail-chip">🕒 Full Day</span>
+            <span class="event-detail-chip">🎟 Ticketed Event</span>
+          </div>
+          <div style="background:var(--pastel-blue);border-radius:10px;padding:1rem;font-size:0.85rem;color:var(--dark-indigo)">
+            <strong>The Cozm booth:</strong> Live demos of Cozm Travel A1 60-second filings · Meet Benjamin &amp; Graham
+          </div>
+          <a href="mailto:benjamin@thecozm.com?subject=London Summit 2025 - Meeting Request" class="event-register-btn">Book a Meeting at the Summit →</a>
+        </div>
+      </div>
+
+      <!-- Event 4 -->
+      <div class="event-card">
+        <div class="event-card-header">
+          <div class="event-type-badge">🎙 Virtual Roundtable</div>
+          <h3 style="color:white;font-size:1.15rem;position:relative;z-index:2">AI in Global Mobility Forum — June 2025 Edition</h3>
+          <div class="event-date-box" style="position:relative;z-index:2">
+            <div class="event-date-block">
+              <div class="day">19</div>
+              <div class="month">Jun</div>
+            </div>
+            <div class="event-date-meta">
+              <strong>Thursday, 19 June 2025</strong>
+              14:00 – 15:30 BST · Online
+            </div>
+          </div>
+        </div>
+        <div class="event-card-body">
+          <p>Monthly forum for HR and global mobility leaders. June's session: "Building a Business Case for AI in Global Mobility" — how to get CFO sign-off, calculate ROI on automation, and make the case for platforms like The Cozm.</p>
+          <div class="event-details">
+            <span class="event-detail-chip">🌍 Online · Zoom</span>
+            <span class="event-detail-chip">🕒 90 minutes</span>
+            <span class="event-detail-chip">👥 Limited to 50 attendees</span>
+            <span class="event-detail-chip">🆓 Free to attend</span>
+          </div>
+          <div style="background:var(--pastel-blue);border-radius:10px;padding:1rem;font-size:0.85rem;color:var(--dark-indigo)">
+            <strong>Special guest:</strong> Graham Wyllie, CGO (ex-EY &amp; PwC Partner)
+          </div>
+          <a href="mailto:support@thecozm.com?subject=Registration: AI in Global Mobility Forum June 2025" class="event-register-btn">Register Now →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER / NOTIFY ME -->
+<section class="section" style="background:var(--pastel-blue)">
+  <div class="container">
+    <div class="newsletter-cta-box">
+      <div style="position:relative;z-index:2;flex:1;min-width:260px">
+        <div class="section-label">Stay in the Loop</div>
+        <h3 style="color:white;margin-bottom:0.5rem">Never Miss an Event</h3>
+        <p style="color:rgba(255,255,255,0.55);max-width:420px">Subscribe to be notified about upcoming roundtables, webinars, and industry events — delivered directly to your inbox.</p>
+      </div>
+      <form style="display:flex;gap:0.75rem;flex-shrink:0;flex-wrap:wrap;position:relative;z-index:2" onsubmit="return false;">
+        <input type="email" placeholder="Enter your work email" style="padding:0.85rem 1.25rem;border-radius:50px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.06);color:white;font-family:'Inter',sans-serif;font-size:0.9rem;min-width:240px;outline:none;transition:border-color 0.2s">
+        <button type="submit" class="btn btn-teal">Notify Me</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- PAST EVENTS -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Archive</div>
+    <h2>Past <span class="teal">Events</span></h2>
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-top:2rem">
+
+      <div class="past-event-card">
+        <div class="past-date-tag"><div class="day">20</div><div class="month">Mar</div></div>
+        <div>
+          <h4>AI in Global Mobility Forum — March 2025</h4>
+          <p>80+ attendees. Topics: UK ETA impact on business travel, A1 automation in practice, live Q&amp;A on EU PWD enforcement trends.</p>
+          <span style="font-size:0.75rem;color:var(--teal);font-weight:600;margin-top:0.5rem;display:inline-block">📹 Recording available on request</span>
+        </div>
+      </div>
+
+      <div class="past-event-card">
+        <div class="past-date-tag"><div class="day">27</div><div class="month">Feb</div></div>
+        <div>
+          <h4>Webinar: Equal Pay for Equal Work — Are You Ready for 2025 Enforcement?</h4>
+          <p>Deep dive into EU Equal Pay Directive obligations, automated compliance tools, and audit-ready reporting. Hosted by Nargiz Garadaghi.</p>
+          <span style="font-size:0.75rem;color:var(--teal);font-weight:600;margin-top:0.5rem;display:inline-block">📹 Recording available on request</span>
+        </div>
+      </div>
+
+      <div class="past-event-card">
+        <div class="past-date-tag"><div class="day">15</div><div class="month">Jan</div></div>
+        <div>
+          <h4>AI in Global Mobility Forum — January 2025 (Launch Edition)</h4>
+          <p>Inaugural monthly forum. 60+ attendees from 15+ countries. Topics: AI capability threshold, Cozm Travel demo, 2025 regulatory outlook.</p>
+          <span style="font-size:0.75rem;color:var(--teal);font-weight:600;margin-top:0.5rem;display:inline-block">📹 Recording available on request</span>
+        </div>
+      </div>
+
+    </div>
+    <p style="margin-top:1.5rem;font-size:0.875rem;color:var(--body-text)">To request a recording from any past event, contact <a href="mailto:support@thecozm.com" style="color:var(--teal)">support@thecozm.com</a></p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="section-label">Want to Speak?</div>
+    <h2>Partner With Us on an Event</h2>
+    <p>We're always looking for global mobility leaders, compliance experts, and technology partners to co-host roundtables and webinars. Get in touch to discuss collaboration.</p>
+    <div class="btn-group">
+      <a href="mailto:benjamin@thecozm.com?subject=Event Partnership Enquiry" class="btn btn-teal">Get in Touch</a>
+      <a href="insights.html" class="btn btn-outline-white">Read Our Articles →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-top">
+    <img src="assets/logo-transparent.png" alt="The Cozm">
+    <p>Digital Acceleration of Global Mobility</p>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/company/thecozm" target="_blank" title="LinkedIn">in</a>
+      <a href="mailto:support@thecozm.com" title="Email">✉</a>
+      <a href="https://www.thecozm.com" target="_blank" title="Website">🌐</a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col"><h5>Solutions</h5><ul><li><a href="cozm-travel.html">Cozm Travel</a></li><li><a href="cozm-unity.html">Cozm Unity</a></li><li><a href="cozm-nemo.html">Cozm Nemo</a></li></ul></div>
+      <div class="footer-col"><h5>Company</h5><ul><li><a href="why-us.html">Why Us?</a></li><li><a href="why-now.html">Why Now?</a></li><li><a href="case-studies.html">Case Studies</a></li><li><a href="about.html">About Us</a></li></ul></div>
+      <div class="footer-col"><h5>Insights</h5><ul><li><a href="insights.html">Articles</a></li><li><a href="events.html">Events</a></li><li><a href="insights.html#news">News</a></li></ul></div>
+      <div class="footer-col"><h5>Contact</h5><ul><li><a href="mailto:support@thecozm.com">support@thecozm.com</a></li><li><a href="mailto:benjamin@thecozm.com">benjamin@thecozm.com</a></li><li><a href="https://www.thecozm.com" target="_blank">www.thecozm.com</a></li></ul></div>
+    </div>
+    <div class="footer-address">
+      <p>The Cozm Ltd &nbsp;·&nbsp; London, United Kingdom &nbsp;·&nbsp; <a href="mailto:support@thecozm.com">support@thecozm.com</a></p>
+      <div class="iso-badge"><span class="badge">ISO 7001</span> Certified</div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 The Cozm Ltd. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="chatbot.js"></script>
+<script>function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }</script>
+</body>
+</html>
