@@ -130,7 +130,7 @@ p { color: var(--body-text); line-height: 1.75; }
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(11,14,31,0.92);
+  background: rgba(4,5,14,0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(64,174,188,0.15);
@@ -345,21 +345,23 @@ p { color: var(--body-text); line-height: 1.75; }
   margin-top: 3rem;
 }
 .product-card {
-  border: 1px solid var(--light-gray);
+  border: 1px solid rgba(64,174,188,0.35);
   border-radius: 20px;
   padding: 2.5rem;
+  background: #ffffff;
   transition: all 0.3s;
   position: relative;
   overflow: hidden;
 }
 .product-card:hover {
   border-color: var(--teal);
-  box-shadow: 0 20px 60px rgba(64,174,188,0.1);
+  box-shadow: 0 20px 60px rgba(64,174,188,0.12);
   transform: translateY(-4px);
 }
 .product-card.featured {
-  background: var(--dark-indigo);
+  background: #ffffff;
   border-color: var(--teal);
+  box-shadow: 0 4px 24px rgba(64,174,188,0.1);
 }
 .product-icon {
   width: 56px;
@@ -372,11 +374,11 @@ p { color: var(--body-text); line-height: 1.75; }
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
 }
-.product-card.featured .product-icon { background: rgba(64,174,188,0.2); }
+.product-card.featured .product-icon { background: rgba(64,174,188,0.15); }
 .product-card h3 { color: var(--dark-indigo); margin-bottom: 0.75rem; }
-.product-card.featured h3 { color: var(--white); }
+.product-card.featured h3 { color: var(--dark-indigo); }
 .product-card p { font-size: 0.9rem; margin-bottom: 1.5rem; }
-.product-card.featured p { color: rgba(255,255,255,0.6); }
+.product-card.featured p { color: var(--body-text); }
 .product-features { margin: 1.5rem 0; }
 .product-features li {
   display: flex;
@@ -386,7 +388,7 @@ p { color: var(--body-text); line-height: 1.75; }
   color: var(--body-text);
   padding: 0.3rem 0;
 }
-.product-card.featured .product-features li { color: rgba(255,255,255,0.65); }
+.product-card.featured .product-features li { color: var(--body-text); }
 .product-features li::before {
   content: '';
   width: 6px; height: 6px;
@@ -454,8 +456,10 @@ p { color: var(--body-text); line-height: 1.75; }
 .why-item h4 { color: var(--dark-indigo); margin-bottom: 0.3rem; }
 .why-item p { font-size: 0.9rem; }
 .why-image img {
-  border-radius: 20px;
-  box-shadow: 0 30px 80px rgba(24,28,49,0.15);
+  width: 100%;
+  max-width: 520px;
+  display: block;
+  margin: 0 auto;
 }
 
 /* ======== COMPARISON TABLE ======== */
