@@ -130,7 +130,7 @@ p { color: var(--body-text); line-height: 1.75; }
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(4,5,14,0.97);
+  background: rgba(15,17,32,0.98);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(64,174,188,0.15);
@@ -426,41 +426,39 @@ p { color: var(--body-text); line-height: 1.75; }
 .why-now {
   background: var(--pastel-blue);
 }
-.why-now-grid {
+.why-cards-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
 }
-.why-items { margin-top: 2rem; }
-.why-item {
-  display: flex;
-  gap: 1.25rem;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid rgba(64,174,188,0.15);
+.why-card {
+  background: #ffffff;
+  border: 1px solid rgba(64,174,188,0.2);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  transition: all 0.3s;
 }
-.why-item:last-child { border-bottom: none; }
-.why-num {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+.why-card:hover {
+  border-color: var(--teal);
+  box-shadow: 0 12px 40px rgba(64,174,188,0.1);
+  transform: translateY(-4px);
+}
+.why-card .why-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   background: var(--teal);
   color: var(--white);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  margin-bottom: 1.25rem;
 }
-.why-item h4 { color: var(--dark-indigo); margin-bottom: 0.3rem; }
-.why-item p { font-size: 0.9rem; }
-.why-image img {
-  width: 100%;
-  max-width: 520px;
-  display: block;
-  margin: 0 auto;
-}
+.why-card h4 { color: var(--dark-indigo); margin-bottom: 0.75rem; font-size: 1rem; }
+.why-card p { font-size: 0.9rem; line-height: 1.7; }
 
 /* ======== COMPARISON TABLE ======== */
 .comparison { background: var(--white); }
@@ -652,10 +650,10 @@ p { color: var(--body-text); line-height: 1.75; }
   margin-bottom: 4rem;
 }
 .footer-brand img { height: 40px; filter: brightness(0) invert(1); margin-bottom: 1rem; }
-.footer-brand p { font-size: 0.875rem; color: rgba(255,255,255,0.4); max-width: 260px; line-height: 1.7; }
+.footer-brand p { font-size: 0.875rem; color: rgba(255,255,255,0.85); max-width: 260px; line-height: 1.7; }
 .footer-col h5 { color: var(--white); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.25rem; }
 .footer-col ul { display: flex; flex-direction: column; gap: 0.6rem; }
-.footer-col ul li a { font-size: 0.875rem; color: rgba(255,255,255,0.45); transition: color 0.2s; }
+.footer-col ul li a { font-size: 0.875rem; color: rgba(255,255,255,0.85); transition: color 0.2s; }
 .footer-col ul li a:hover { color: var(--teal); }
 .footer-bottom {
   display: flex;
@@ -664,7 +662,7 @@ p { color: var(--body-text); line-height: 1.75; }
   padding-top: 2rem;
   border-top: 1px solid rgba(255,255,255,0.07);
 }
-.footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+.footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.85); }
 .footer-bottom a { color: var(--teal); }
 .iso-badge {
   display: flex;
@@ -974,7 +972,8 @@ p { color: var(--body-text); line-height: 1.75; }
   .hero-image { display: none; }
   .hero-stats { justify-content: center; gap: 1.5rem; }
 
-  .grid-2, .pain-points-grid, .why-now-grid, .benefits-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .grid-2, .pain-points-grid, .benefits-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .why-cards-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .grid-3, .products-grid, .automations-grid, .team-grid, .values-grid, .insights-grid { grid-template-columns: 1fr; }
   .pillars-grid { grid-template-columns: 1fr; }
   .testimonials-grid { grid-template-columns: 1fr; }
@@ -1004,7 +1003,7 @@ p { color: var(--body-text); line-height: 1.75; }
   margin-bottom: 3rem;
 }
 .footer-top img { height: 108px; width: auto; margin: 0 auto 0.75rem; }
-.footer-top p { font-size: 0.875rem; color: rgba(255,255,255,0.35); }
+.footer-top p { font-size: 0.875rem; color: rgba(255,255,255,0.9); }
 .footer-social {
   display: flex;
   gap: 0.75rem;
@@ -1031,7 +1030,7 @@ p { color: var(--body-text); line-height: 1.75; }
   flex-wrap: wrap;
   gap: 1rem;
 }
-.footer-address p { font-size: 0.8rem; color: rgba(255,255,255,0.3); line-height: 1.7; }
+.footer-address p { font-size: 0.8rem; color: rgba(255,255,255,0.85); line-height: 1.7; }
 .footer-address a { color: rgba(64,174,188,0.7); transition: color 0.2s; }
 .footer-address a:hover { color: var(--teal); }
 
