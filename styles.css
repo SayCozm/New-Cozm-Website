@@ -68,6 +68,20 @@ p { color: var(--body-text); line-height: 1.75; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
 
+/* Grid pattern overlay for hero */
+.grid-bg { position: relative; overflow: hidden; }
+.grid-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(64,174,188,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(64,174,188,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* ======== BUTTONS ======== */
 .btn {
   display: inline-flex;
@@ -116,9 +130,11 @@ p { color: var(--body-text); line-height: 1.75; }
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(24, 28, 49, 0.97);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(64, 174, 188, 0.15);
+  background: rgba(11,14,31,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(64,174,188,0.15);
+  box-shadow: 0 1px 0 rgba(64,174,188,0.2), 0 4px 24px rgba(0,0,0,0.3);
   padding: 0 2rem;
 }
 .nav-inner {
