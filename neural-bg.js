@@ -14,7 +14,7 @@
   }
 
   function init() {
-    var hero = document.querySelector('.hero');
+    var hero = document.querySelector('.hero, .page-hero');
     if (!hero) return;
 
     // Avoid duplicate canvas
@@ -75,7 +75,7 @@
   }
 
   function onMouseMove(e) {
-    var hero = document.querySelector('.hero');
+    var hero = document.querySelector('.hero, .page-hero');
     if (!hero) return;
     var rect = hero.getBoundingClientRect();
     mouse.x = e.clientX - rect.left;

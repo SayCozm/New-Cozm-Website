@@ -686,6 +686,17 @@ p { color: var(--body-text); line-height: 1.75; }
   content: '';
   position: absolute;
   inset: 0;
+  background-image:
+    linear-gradient(rgba(64,174,188,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(64,174,188,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(64,174,188,0.1) 0%, transparent 70%);
 }
 .page-hero .container { position: relative; z-index: 2; }
