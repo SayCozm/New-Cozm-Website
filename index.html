@@ -633,6 +633,7 @@ function init(staticryptConfig, templateConfig) {
         if (typeof replaceHtmlCallback === "function") {
             replaceHtmlCallback(plainHTML);
         } else {
+            document.open('text/html', 'replace');
             document.write(plainHTML);
             document.close();
         }
